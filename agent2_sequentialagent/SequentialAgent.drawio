@@ -1,0 +1,36 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36" version="28.2.5">
+  <diagram name="EE_ALL_INAM_CONTRACT_STRUCTURE" id="1">
+    <mxGraphModel dx="1042" dy="658" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="IjJnz02KxAG2OImg_L8I-8" value="🚀 Sequential Agent Workflow" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#4a7ebb;fontSize=20;fontStyle=1;align=center;verticalAlign=middle;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="190" y="70" width="500" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="IjJnz02KxAG2OImg_L8I-9" value="🧠 CodeWriterAgent&#xa;Generates Python Code" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#cfe2ff;strokeColor=#6c8ebf;fontSize=14;fontStyle=0;align=center;verticalAlign=middle;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="200" width="180" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="IjJnz02KxAG2OImg_L8I-10" value="🕵️‍♂️ CodeReviewerAgent&#xa;Reviews &amp; Provides Feedback" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#6c8ebf;fontSize=14;fontStyle=0;align=center;verticalAlign=middle;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="330" y="200" width="200" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="IjJnz02KxAG2OImg_L8I-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="IjJnz02KxAG2OImg_L8I-11">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="650" y="390" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="IjJnz02KxAG2OImg_L8I-11" value="🧩 CodeRefactorerAgent&#xa;Refactors Code per Review" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#6c8ebf;fontSize=14;fontStyle=0;align=center;verticalAlign=middle;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="600" y="200" width="200" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="IjJnz02KxAG2OImg_L8I-12" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=block;html=1;strokeColor=#4a7ebb;strokeWidth=2;" edge="1" parent="1" source="IjJnz02KxAG2OImg_L8I-9" target="IjJnz02KxAG2OImg_L8I-10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="IjJnz02KxAG2OImg_L8I-13" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=block;html=1;strokeColor=#4a7ebb;strokeWidth=2;" edge="1" parent="1" source="IjJnz02KxAG2OImg_L8I-10" target="IjJnz02KxAG2OImg_L8I-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="IjJnz02KxAG2OImg_L8I-14" value="✅ Final Output:&#xa;Refactored Python Code" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#999966;fontSize=14;fontStyle=0;align=center;verticalAlign=middle;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="480" y="390" width="250" height="90" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
