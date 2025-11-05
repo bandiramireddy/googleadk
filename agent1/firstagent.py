@@ -6,7 +6,7 @@ load_dotenv()
 
 root_agent = Agent(
     name="agent1",
-    model="gemini-2.5-flash",#gemini-2.5-flash-image
+    model="gemini-2.5-flash", #gemini-2.5-flash-image
     description="An AI assistant that answers user questions clearly.",
     instruction="""
     You are a knowledgeable AI assistant.
