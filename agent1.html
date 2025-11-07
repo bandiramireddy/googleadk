@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Agent1 Interaction Client</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 40px; background-color: #f4f4f9; }
+    h2 { color: #333; }
+    input, textarea, button { 
+      display: block; 
+      margin: 10px 0; 
+      width: 400px; 
+      padding: 10px; 
+      border-radius: 5px; 
+      border: 1px solid #ccc;
+      box-sizing: border-box; /* Include padding in width calculation */
+    }
+    textarea { height: 100px; resize: vertical; }
+    button { 
+      background-color: #007bff; 
+      color: white; 
+      cursor: pointer; 
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+    button:hover { background-color: #0056b3; }
+    pre { 
+      background-color: #eee; 
+      padding: 15px; 
+      border-radius: 5px; 
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      border: 1px solid #ddd;
+    }
+  </style>
+</head>
+<body>
+  <h2>🤖 Agent1 Interaction</h2>
+
+  <label for="message">Enter your message:</label>
+  <textarea id="message" placeholder="Type your message here..."></textarea>
+
+  <button onclick="sendMessage()">Send to Agent</button>
+
+  <h3>Response:</h3>
+  <pre id="response">Waiting for interaction...</pre>
+
+  <script>
+    // Define the base URL consistently
+    const BASE_URL = "http://localhost:8000";
+
+    function generateId() {
+      // Generates a unique, random ID for user and session
+      return 'id-' + Math.random().toString(36).substr(2, 9);
+    }
+
+    async function sendMessage() {
+      const messageText = document.getElementById('message').value;
+      
+      // Basic input validation
+      if (!messageText.trim()) {
+        document.getElementById('response').textContent = "Error: Message cannot be empty.";
+        return;
+      }
+
+      // Generate unique IDs for the new interaction
+      const userId = generateId();
+      const sessionId = generateId();
+
+      document.getElementById('response').textContent = 'Sending request...';
+
+      try {
+        // --- Step 1: Create session (POST) ---
+        const sessionUrl = `${BASE_URL}/apps/agent1/users/${userId}/sessions/${sessionId}`;
+        
+        console.log(`Step 1: Creating session at ${sessionUrl}`);
+
+        const sessionResponse = await fetch(sessionUrl, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: "{}" // Empty JSON body as required
+        });
+
+        if (!sessionResponse.ok) {
+           throw new Error(`Session creation failed: ${sessionResponse.status} ${sessionResponse.statusText}`);
+        }
+        
+        // --- Step 2: Send message to /run (POST) ---
+        const runUrl = `${BASE_URL}/run`;
+        const payload = {
+          app_name: "agent1",
+          user_id: userId,
+          session_id: sessionId,
+          new_message: { role: "user", parts: [{ text: messageText }] }
+        };
+
+        console.log(`Step 2: Sending message to ${runUrl} with payload:`, payload);
+
+        const res = await fetch(runUrl, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        });
+
+        // Check if the /run request was successful
+        if (!res.ok) {
+           throw new Error(`Run endpoint failed: ${res.status} ${res.statusText}`);
+        }
+        
+        const data = await res.json();
+        
+        // Display the pretty-printed JSON response
+        document.getElementById('response').textContent = JSON.stringify(data, null, 2);
+
+      } catch (error) {
+        // Log error to console and display a user-friendly error message
+        console.error('API Interaction Error:', error);
+        document.getElementById('response').textContent = `Request Failed: ${error.message}. 
+        \n\nPossible Cause: Check your backend server is running on ${BASE_URL} and that it has **CORS** enabled.`;
+      }
+    }
+  </script>
+</body>
+</html>
