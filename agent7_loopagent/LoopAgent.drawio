@@ -1,0 +1,49 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36" version="28.2.9">
+  <diagram name="FullArticleWorkflow" id="ABRcm_kn_Wp7HzQR1IIU">
+    <mxGraphModel dx="1042" dy="658" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="mei569T61pxKs3WSPQSJ-1" value="FullArticleWorkflow (SequentialAgent)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ADD8E6;" vertex="1" parent="1">
+          <mxGeometry x="340" y="73" width="320" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="mei569T61pxKs3WSPQSJ-2" value="ArticleWriter (LlmAgent)&#xa;Task: Generate Draft" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#90EE90;" vertex="1" parent="1">
+          <mxGeometry x="100" y="223" width="220" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="mei569T61pxKs3WSPQSJ-3" value="ContentRefinementLoop (LoopAgent)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFF99;" vertex="1" parent="1">
+          <mxGeometry x="480" y="223" width="260" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="mei569T61pxKs3WSPQSJ-4" value="ArticleEditor (LlmAgent)&#xa;Task: Refine Draft" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E0FFFF;" vertex="1" parent="1">
+          <mxGeometry x="420" y="373" width="220" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="mei569T61pxKs3WSPQSJ-5" value="ArticleCritic (LlmAgent)&lt;br&gt;Task: Critique Draft&amp;nbsp;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFB6C1;" vertex="1" parent="1">
+          <mxGeometry x="700" y="373" width="260" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="mei569T61pxKs3WSPQSJ-7" edge="1" parent="1" source="mei569T61pxKs3WSPQSJ-1" target="mei569T61pxKs3WSPQSJ-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="mei569T61pxKs3WSPQSJ-8" edge="1" parent="1" source="mei569T61pxKs3WSPQSJ-1" target="mei569T61pxKs3WSPQSJ-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="mei569T61pxKs3WSPQSJ-9" edge="1" parent="1" source="mei569T61pxKs3WSPQSJ-3" target="mei569T61pxKs3WSPQSJ-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="mei569T61pxKs3WSPQSJ-10" edge="1" parent="1" source="mei569T61pxKs3WSPQSJ-3" target="mei569T61pxKs3WSPQSJ-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="mei569T61pxKs3WSPQSJ-13" style="exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=0.711;entryY=1.038;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="mei569T61pxKs3WSPQSJ-5" target="mei569T61pxKs3WSPQSJ-4">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="630" y="463" as="sourcePoint" />
+            <mxPoint x="630" y="523" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="690" y="503" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mei569T61pxKs3WSPQSJ-14" value="Loop Agent&amp;nbsp;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="320" y="20" width="370" height="40" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

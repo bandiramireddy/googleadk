@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 load_dotenv()
 # --- Path to your service account key file ---
 SERVICE_ACCOUNT_PATH = os.path.join("../", "service-key.json")
-
+print(SERVICE_ACCOUNT_PATH)
 # --- Load credentials from the service account file ---
 service_credentials = service_account.Credentials.from_service_account_file(
     SERVICE_ACCOUNT_PATH
@@ -30,14 +30,16 @@ bigquery_toolset = BigQueryToolset(
 
 # --- Define your agent ---
 root_agent = Agent(
-    name="BigQuery_Agent",
+    name="agent3_bigquery",
     model="gemini-2.0-flash",
     description=(
         "Agent that answers questions about BigQuery data and executes SQL queries."
     ),
     instruction="""\
-        You are a data science agent with access to BigQuery tools.
-        Use them to query data, analyze results, and help users understand insights.
+        Hello! I'm your friendly Data Assistant, here to help you explore your BigQuery data.
+        My goal is to use the BigQuery tools I have to run queries,
+        analyze the results quickly, and explain the data insights in a clear, easy-to-understand way.
+        Ask me anything about your datasets!
     """,
-    tools=[bigquery_toolset],
+    tools=[bigquery_toolset]
 )

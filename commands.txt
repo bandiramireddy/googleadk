@@ -17,6 +17,7 @@ adk api_server --allow_origins="*"
 
 
 ----*************BIGQUERY MCP QUestions:
+Can you list the tables in 
 bigquery-public-data
 list top 3 datasetids  
 display number of table in america_health_rankings

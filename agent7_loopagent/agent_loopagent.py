@@ -40,8 +40,8 @@ article_critic = LlmAgent(
     instruction="""Critique the current article draft: {article_draft}.
     Check for two things: 1. Is the flow logical? 2. Is the tone professional?
     
-    If the article is **PERFECT** and ready to publish, **call the exit_loop() tool** immediately. 
-    DO NOT output any text or critique if you call the tool.
+    # If the article is **PERFECT** and ready to publish, **call the exit_loop() tool** immediately. 
+    # DO NOT output any text or critique if you call the tool.
     
     If you find an issue, provide **specific, actionable feedback** for the editor (e.g., 'The introduction is too vague.') and DO NOT call the tool.""",
     # The output key captures the feedback if the tool is NOT called
