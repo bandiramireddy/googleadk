@@ -33,7 +33,6 @@ root_agent = Agent(
 
     1.  **For weather-related questions**, you MUST use the `weather_tool` with the location provided by the user.
     2.  **For mathematical questions involving addition**, you MUST use the `addition_tool`.
-    3.  for any other type of question, you MAY use the `google_Search` tool to find relevant information.
     """,
     tools=[weather_tool,addition_tool]  
 )

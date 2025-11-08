@@ -4,14 +4,14 @@ from dotenv import load_dotenv
 import os
 load_dotenv()
 
-def exit_loop(tool_context: ToolContext):
-    """Call this function ONLY when the critique indicates no further changes are needed, 
-    signaling the iterative process should end."""
-    print(f"  [Tool Call] exit_loop triggered by {tool_context.agent_name}")
-    # Setting this flag is the mechanism to break out of a LoopAgent
-    tool_context.actions.escalate = True 
-    # Tools should typically return JSON-serializable output
-    return {"status": "Loop terminated successfully"}
+# def exit_loop(tool_context: ToolContext):
+#     """Call this function ONLY when the critique indicates no further changes are needed, 
+#     signaling the iterative process should end."""
+#     print(f"  [Tool Call] exit_loop triggered by {tool_context.agent_name}")
+#     # Setting this flag is the mechanism to break out of a LoopAgent
+#     tool_context.actions.escalate = True 
+#     # Tools should typically return JSON-serializable output
+#     return {"status": "Loop terminated successfully"}
 
 # Agent 1 (Generator - No change)
 article_writer = LlmAgent(
@@ -37,7 +37,6 @@ article_editor = LlmAgent(
 article_critic = LlmAgent(
     name="ArticleCritic",
     model="gemini-2.5-flash", 
-    # tools=[exit_loop],
     instruction="""Critique the current article draft: {article_draft}.
     Check for two things: 1. Is the flow logical? 2. Is the tone professional?
     
@@ -51,7 +50,6 @@ article_critic = LlmAgent(
 
 refinement_loop = LoopAgent(
     name="ContentRefinementLoop",
-    # The writer is removed; the loop only contains refinement and critique
     sub_agents=[
         article_editor,   # Refine
         article_critic    # Critique and set state for next check
